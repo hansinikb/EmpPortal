@@ -1,0 +1,23 @@
+
+/* USP Scroll Popup */
+.usp-popup {
+    position: fixed;
+    right: 20px; /* Keep it on the right */
+    top: 20px; /* Move it to the top */
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    animation: fadeInOut 3s ease-in-out;
+  }
+  
+  /* Animation for fade in and fade out */
+  @keyframes fadeInOut {
+    0% { opacity: 0; transform: translateX(100%); }
+    10% { opacity: 1; transform: translateX(0); }
+    90% { opacity: 1; transform: translateX(0); }
+    100% { opacity: 0; transform: translateX(100%); }
+  }
+  

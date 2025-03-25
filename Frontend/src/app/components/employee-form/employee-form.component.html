@@ -1,0 +1,95 @@
+<!-- <h2 mat-dialog-title>Edit Employee</h2>
+<div mat-dialog-content>
+  <form>
+    <mat-form-field class="full-width">
+      <mat-label>Name</mat-label>
+      <input matInput [(ngModel)]="employee.empName" name="name" required />
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Age</mat-label>
+      <input matInput type="number" [(ngModel)]="employee.age" name="age" required />
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" [(ngModel)]="employee.email" name="email" required />
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>DOB</mat-label>
+      <input matInput type="date" [(ngModel)]="employee.dob" name="dob" required />
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Phone</mat-label>
+      <input matInput type="text" [(ngModel)]="employee.phno" name="phno" required />
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="onSubmit()">Save</button>
+</div> 
+ -->
+
+
+ <h2 mat-dialog-title>Edit Employee</h2>
+<div mat-dialog-content>
+  <form #employeeForm="ngForm">
+    
+    <mat-form-field class="full-width">
+      <mat-label>Name</mat-label>
+      <input matInput [(ngModel)]="employee.empName" name="name" #name="ngModel"
+             required pattern="^[A-Za-z ]+$" />
+      <mat-error *ngIf="name.invalid && name.touched">
+        Enter valid name
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Age</mat-label>
+      <input matInput type="number" [(ngModel)]="employee.age" name="age" #age="ngModel"
+             required min="1" max="100" />
+      <mat-error *ngIf="age.invalid && age.touched">
+        Enter valid age
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" [(ngModel)]="employee.email" name="email" #email="ngModel"
+             required email />
+      <mat-error *ngIf="email.invalid && email.touched">
+        Enter a valid email
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>DOB</mat-label>
+      <input matInput type="date" [(ngModel)]="employee.dob" name="dob" #dob="ngModel" required />
+      <mat-error *ngIf="dob.invalid && dob.touched">
+        Enter a valid date
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Phone</mat-label>
+      <input matInput type="text" [(ngModel)]="employee.phno" name="phno" #phno="ngModel"
+             required pattern="^[0-9]{10}$" />
+      <mat-error *ngIf="phno.invalid && phno.touched">
+        Enter valid phone number 
+      </mat-error>
+    </mat-form-field>
+
+  </form>
+
+
+  
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-raised-button color="primary" [disabled]="employeeForm.invalid" (click)="onSubmit()">Save</button>
+
+  <!-- <app-usp-popup [showPopup]="showPopup" [message]="message"></app-usp-popup> -->
+</div>

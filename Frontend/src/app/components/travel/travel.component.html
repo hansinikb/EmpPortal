@@ -1,0 +1,134 @@
+<!-- <div class="container">
+    <h2>Employee Travel Details</h2>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Employee ID</th>
+          <th>Home Address</th>
+          <th>Shift Time</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let travel of travels">
+          <td>{{ travel.empId }}</td>
+          <td>{{ travel.homeAddress }}</td>
+          <td>{{ travel.shiftTime }}</td>
+          <td>
+            <button class="btn btn-warning btn-sm me-2" (click)="editTravel(travel)">Edit</button>
+            <button class="btn btn-info btn-sm me-2" (click)="viewTravel(travel)">View</button>
+            <button class="btn btn-danger btn-sm me-2" (click)="deleteTravel(travel)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <div *ngIf="selectedTravel" class="edit-form">
+      <h3>Edit Travel Details</h3>
+      <form  (ngSubmit)="updateTravel()">
+        <input type="hidden" [(ngModel)]="selectedTravel.empId" name="empId" />
+        <div class="mb-2">
+          <label>Home Address:</label>
+          <input type="text"  [(ngModel)]="selectedTravel.homeAddress" name="homeAddress" required class="form-control" />
+        </div>
+        <div class="mb-2">
+          <label>Shift Time:</label>
+          <input type="text" [(ngModel)]="selectedTravel.shiftTime"  name="shiftTime" required class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-success btn-sm" >Update</button>
+      </form>
+    </div>
+</div> -->
+
+
+
+<!-- 
+
+<div class="container">
+  <h2>Employee Travel Details</h2>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    
+    <ng-container matColumnDef="empId">
+      <th mat-header-cell *matHeaderCellDef> Employee ID </th>
+      <td mat-cell *matCellDef="let travel"> {{ travel.empId }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="homeAddress">
+      <th mat-header-cell *matHeaderCellDef> Home Address </th>
+      <td mat-cell *matCellDef="let travel"> {{ travel.homeAddress }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="shiftTime">
+      <th mat-header-cell *matHeaderCellDef> Shift Time </th>
+      <td mat-cell *matCellDef="let travel"> {{ travel.shiftTime }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let travel">
+        <button mat-button color="primary" (click)="viewTravel(travel)">View</button>
+        <button mat-button color="warn" (click)="deleteTravel(travel)">Delete</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selectTravel(row)" [class.selected]="selectedTravel?.empId === row.empId">
+    </tr>
+  </table>
+
+  <div *ngIf="selectedTravel" class="edit-form">
+    <h3>Edit Travel Details</h3>
+    <form (ngSubmit)="updateTravel()">
+      <div>
+        <label>Home Address:</label>
+        <input matInput type="text" [(ngModel)]="selectedTravel.homeAddress" name="homeAddress" required />
+      </div>
+      <div>
+        <label>Shift Time:</label>
+        <input matInput type="text" [(ngModel)]="selectedTravel.shiftTime" name="shiftTime" required />
+      </div>
+      <button mat-raised-button color="accent" type="submit">Update</button>
+    </form>
+  </div>
+
+  <div class="usp-popup" *ngIf="showSuccessPopup">
+    Edited successfully!
+  </div>
+</div> -->
+
+<div class="container">
+  <h2>Employee Travel Details</h2>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    
+    <ng-container matColumnDef="empId">
+      <th mat-header-cell *matHeaderCellDef> Employee ID </th>
+      <td mat-cell *matCellDef="let travel"> {{ travel.empId }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="homeAddress">
+      <th mat-header-cell *matHeaderCellDef> Home Address </th>
+      <td mat-cell *matCellDef="let travel"> {{ travel.homeAddress }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="shiftTime">
+      <th mat-header-cell *matHeaderCellDef> Shift Time </th>
+      <td mat-cell *matCellDef="let travel"> {{ travel.shiftTime }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let travel">
+        <!-- <button mat-button color="primary" (click)="viewTravel(travel)">View</button> -->
+        <button mat-button color="primary" (click)="openEditDialog(travel)">Edit</button>
+        <button mat-button color="warn" (click)="deleteTravel(travel)">Delete</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <div class="usp-popup" *ngIf="showSuccessPopup">
+    Edited successfully!
+  </div>
+</div>

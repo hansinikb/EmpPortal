@@ -1,0 +1,24 @@
+.usp-popup {
+    position: fixed;
+    top: -50px; /* Initially hidden above */
+    right: 20px;
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    transition: top 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    opacity: 0;
+    z-index: 1000;
+  }
+  
+  .usp-popup.show {
+    top: 20px;
+    opacity: 1;
+  }
+  /* .usp-popup {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  } */

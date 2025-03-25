@@ -1,0 +1,54 @@
+<h2 mat-dialog-title>Edit Canteen Item</h2>
+<div mat-dialog-content>
+  <form #canteenForm="ngForm">
+    
+    <!-- Counter Selection -->
+    <mat-form-field class="full-width">
+      <mat-label>Counter</mat-label>
+      <mat-select [(ngModel)]="canteenItem.counter" name="counter" required #counter="ngModel">
+        <mat-option value="A">A</mat-option>
+        <mat-option value="B">B</mat-option>
+        <mat-option value="C">C</mat-option>
+        <mat-option value="D">D</mat-option>
+      </mat-select>
+      <mat-error *ngIf="counter.invalid && counter.touched">Select a valid counter</mat-error>
+    </mat-form-field>
+
+    <!-- Item Name Validation -->
+    <mat-form-field class="full-width">
+      <mat-label>Item Name</mat-label>
+      <input matInput [(ngModel)]="canteenItem.itemName" name="itemName" #itemName="ngModel"
+             required pattern="^[A-Za-z ]+$" />
+      <mat-error *ngIf="itemName.invalid && itemName.touched">
+        Enter a valid item name
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Price Validation -->
+    <mat-form-field class="full-width">
+      <mat-label>Price (₹)</mat-label>
+      <input matInput type="number" [(ngModel)]="canteenItem.price" name="price" #price="ngModel"
+             required min="1" />
+      <mat-error *ngIf="price.invalid && price.touched">
+        Enter a valid price
+      </mat-error>
+    </mat-form-field>
+
+  </form>
+</div>
+
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-raised-button color="primary" [disabled]="canteenForm.invalid" (click)="onSubmit()">Save</button>
+</div>
+
+<div class="usp-popup" *ngIf="showPopup">
+  {{ message }}
+</div>
+
+
+
+
+
+
+

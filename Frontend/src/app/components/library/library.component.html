@@ -1,0 +1,112 @@
+<!-- <div class="container">
+    <h2>Library Books</h2>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Book ID</th>
+          <th>Book Name</th>
+          <th>Category</th>
+          <th>Author</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let book of books">
+          <td>{{ book.bookId }}</td>
+          <td>{{ book.bookName }}</td>
+          <td>{{ book.category }}</td>
+          <td>{{ book.author }}</td>
+          <td>
+            <button class="btn btn-warning btn-sm me-2" (click)="editBook(book)">Edit</button>
+            <button class="btn btn-info btn-sm me-2" (click)="viewBook(book)">View</button>
+            <button class="btn btn-danger btn-sm me-2" (click)="deleteBook(book)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <div *ngIf="selectedBook" class="edit-form">
+      <h3>Edit Book</h3>
+      <form  (ngSubmit)="updateBook()">
+        <div class="mb-2">
+          <label>Book Name:</label>
+          <input type="text"  [(ngModel)]="selectedBook.bookName" name="bookName" required class="form-control" />
+        </div>
+        <div class="mb-2">
+          <label>Category:</label>
+          <input type="text"  [(ngModel)]="selectedBook.category"  name="category" required class="form-control" />
+        </div>
+        <div class="mb-2">
+          <label>Author:</label>
+          <input type="text"  [(ngModel)]="selectedBook.author"  name="author" required class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-success btn-sm">Update</button>
+      </form>
+    </div>
+  </div>
+   -->
+
+   <div class="container">
+    <h2>Library Books</h2>
+    
+    <table mat-table [dataSource]="dataSource"  class="mat-elevation-z8">
+      
+      <ng-container matColumnDef="bookId">
+        <th mat-header-cell *matHeaderCellDef> Book ID </th>
+        <td mat-cell *matCellDef="let book"> {{ book.bookId }} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="bookName">
+        <th mat-header-cell *matHeaderCellDef> Book Name </th>
+        <td mat-cell *matCellDef="let book"> {{ book.bookName }} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef> Category </th>
+        <td mat-cell *matCellDef="let book"> {{ book.category }} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="author">
+        <th mat-header-cell *matHeaderCellDef> Author </th>
+        <td mat-cell *matCellDef="let book"> {{ book.author }} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let book">
+          <button mat-button color="primary" (click)="viewBook(book)">Edit</button>
+          <button mat-button color="warn" (click)="deleteBook(book)">Delete</button>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="['actions','bookId', 'bookName', 'category', 'author' ]"></tr>
+      <tr mat-row *matRowDef="let row; columns: ['actions', 'bookId', 'bookName', 'category', 'author' ];" 
+          (click)="editBook(row)" 
+          [class.selected]="selectedBook?.bookId === row.bookId">
+      </tr>
+    </table>
+  
+    <div *ngIf="selectedBook" class="edit-form">
+      <h3>Edit Book</h3>
+      <form (ngSubmit)="updateBook()">
+        <div>
+          <label>Book Name:</label>
+          <input matInput type="text" [(ngModel)]="selectedBook.bookName" name="bookName" required />
+        </div>
+        <div>
+          <label>Category:</label>
+          <input matInput type="text" [(ngModel)]="selectedBook.category" name="category" required />
+        </div>
+        <div>
+          <label>Author:</label>
+          <input matInput type="text" [(ngModel)]="selectedBook.author" name="author" required />
+        </div>
+        <button mat-raised-button color="accent" type="submit">Update</button>
+      </form>
+    </div>
+  
+    <div class="usp-popup" *ngIf="showSuccessPopup">
+      Edited successfully!
+    </div>
+  </div>
+  

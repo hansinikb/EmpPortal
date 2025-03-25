@@ -1,0 +1,162 @@
+<!-- 
+<div class="container">
+    <h2>Attendance</h2>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>AttendanceId</th>
+          <th>EmpId</th>
+          <th>AttDate</th>
+          <th>InTime</th>
+          <th>OutTime</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let attendance of attendances">
+          <td>{{ attendance.attendanceID }}</td>
+          <td>{{ attendance.empId }}</td>
+          <td>{{ attendance.attDate }}</td>
+          <td>{{ attendance.inTime }}</td>
+          <td>{{ attendance.outTime }}</td>
+
+          <td>
+            <button class="btn btn-info btn-sm me-2" (click)="viewAttendance(attendance)">View</button>
+            <button class="btn btn-danger btn-sm me-2" (click)="deleteAttendance(attendance)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+</div> -->
+
+
+
+
+<!-- <div class="container">
+  <h2>Attendance</h2>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>AttendanceId</th>
+        <th>Employee Name</th> 
+        <th>AttDate</th>
+        <th>InTime</th>
+        <th>OutTime</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let attendance of attendances">
+        <td>{{ attendance.attendanceID }}</td>
+        <td>{{ empMap[attendance.empId] || 'Unknown' }}</td> 
+        <td>{{ attendance.attDate }}</td>
+        <td>{{ attendance.inTime }}</td>
+        <td>{{ attendance.outTime }}</td>
+
+        <td>
+          <button class="btn btn-info btn-sm me-2" (click)="viewAttendance(attendance)">View</button>
+          <button class="btn btn-danger btn-sm me-2" (click)="deleteAttendance(attendance)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>-->
+
+
+
+
+
+
+<!-- <div class="container">
+  <h2>Canteen Menu</h2>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    
+    <ng-container matColumnDef="itemId">
+      <th mat-header-cell *matHeaderCellDef>AttendanceId</th>
+      <td mat-cell *matCellDef="let item"> {{ item.itemId }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="counter">
+      <th mat-header-cell *matHeaderCellDef> Employee Name </th>
+      <td mat-cell *matCellDef="let item"> {{ item.counter }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="itemName">
+      <th mat-header-cell *matHeaderCellDef>AttDate</th>
+      <td mat-cell *matCellDef="let item"> {{ item.itemName }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef> InTime </th>
+      <td mat-cell *matCellDef="let item"> {{ item.price }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef> OutTime </th>
+      <td mat-cell *matCellDef="let item"> {{ item.price }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let item">
+        <button mat-button color="primary" (click)="viewItem(item)">View</button>
+        <button mat-button color="warn" (click)="deleteItem(item)">Delete</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" 
+        (click)="selectItem(row)" 
+        [class.selected]="selectedItem?.itemId === row.itemId">
+    </tr>
+  </table>
+</div>
+ -->
+
+ <div class="container">
+  <h2>Attendance Records</h2>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="attendanceId">
+      <th mat-header-cell *matHeaderCellDef> Attendance ID </th>
+      <td mat-cell *matCellDef="let attendance"> {{ attendance.attendanceID }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="empName">
+      <th mat-header-cell *matHeaderCellDef> Employee Name </th>
+      <td mat-cell *matCellDef="let attendance"> {{ empMap[attendance.empId] || 'Unknown' }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="attDate">
+      <th mat-header-cell *matHeaderCellDef> AttDate </th>
+      <td mat-cell *matCellDef="let attendance"> {{ attendance.attDate }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="inTime">
+      <th mat-header-cell *matHeaderCellDef> In Time </th>
+      <td mat-cell *matCellDef="let attendance"> {{ attendance.inTime  | date: 'h a' }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="outTime">
+      <th mat-header-cell *matHeaderCellDef> Out Time </th>
+      <td mat-cell *matCellDef="let attendance"> {{ attendance.outTime  | date: 'h a' }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let attendance">
+        <button mat-button color="primary" (click)="viewAttendance(attendance)">View</button>
+        <button mat-button color="warn" (click)="deleteAttendance(attendance)">Delete</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" 
+        (click)="selectedItem = row" 
+        [class.selected]="selectedItem?.attendanceID === row.attendanceID">
+    </tr>
+  </table>
+</div>

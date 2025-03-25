@@ -1,0 +1,39 @@
+<h2 mat-dialog-title>Edit Travel Details</h2>
+<div mat-dialog-content>
+  <form #travelForm="ngForm">
+    
+    <!-- Employee ID (Read-Only) -->
+    <!-- <mat-form-field class="full-width">
+      <mat-label>Employee ID</mat-label>
+      <input matInput [(ngModel)]="travel.empId" name="empId" readonly />
+    </mat-form-field> -->
+
+    <!-- Home Address Validation -->
+    <mat-form-field class="full-width">
+      <mat-label>Home Address</mat-label>
+      <input matInput [(ngModel)]="travel.homeAddress" name="homeAddress" #homeAddress="ngModel" required />
+      <mat-error *ngIf="homeAddress.invalid && homeAddress.touched">
+        Address is required
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Shift Time Validation -->
+    <mat-form-field class="full-width">
+      <mat-label>Shift Time</mat-label>
+      <input matInput type="time" [(ngModel)]="travel.shiftTime" name="shiftTime" #shiftTime="ngModel" required />
+      <mat-error *ngIf="shiftTime.invalid && shiftTime.touched">
+        Enter a valid shift time
+      </mat-error>
+    </mat-form-field>
+
+  </form>
+</div>
+
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-raised-button color="primary" [disabled]="travelForm.invalid" (click)="onSubmit()">Save</button>
+</div>
+
+<div class="usp-popup" *ngIf="showPopup">
+  Edited successfully!
+</div>

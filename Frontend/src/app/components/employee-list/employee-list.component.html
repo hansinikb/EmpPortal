@@ -1,0 +1,300 @@
+<!-- 
+   <div class="container">
+    <h2>Employee List</h2>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Email</th>
+          <th>DOB</th>
+          <th>Phone</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employees">
+          <td>{{ employee.empID }}</td>
+          <td>{{ employee.empName }}</td>
+          <td>{{ employee.age }}</td>
+          <td>{{ employee.email }}</td>
+          <td>{{ employee.dob | date:'yyyy-MM-dd' }}</td>
+          <td>{{ employee.phno }}</td>
+          <td>
+            <button class="btn btn-warning btn-sm me-2" (click)="editEmployee(employee)">Edit</button>
+            <button class="btn btn-info btn-sm me-2" (click)="viewEmployee(employee)">View</button>
+            <button class="btn btn-danger btn-sm me-2" (click)="deleteEmployee(employee)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <div *ngIf="selectedEmployee" class="edit-form">
+      <h3>Edit Employee</h3>
+      <app-usp-popup [showPopup]="showSuccessPopup" [message]="successMessage"></app-usp-popup>
+
+      <form (submit)="updateEmployee()">
+        <div class="mb-2">
+          <label>Name:</label>
+          <input type="text"   [(ngModel)]="selectedEmployee.empName" name="name" required />
+        </div>
+        <div class="mb-2">
+          <label>Age:</label>
+          <input type="number"  [(ngModel)]="selectedEmployee.age" name="age" required />
+        </div>
+        <div class="mb-2">
+          <label>Email:</label>
+          <input type="email"   [(ngModel)]="selectedEmployee.email" name="email" required />
+        </div>
+        <div class="mb-2">
+          <label>DOB:</label>
+          <input type="date"  [(ngModel)]="selectedEmployee.dob" name="dob" required />
+        </div>
+        <div class="mb-2">
+          <label>Phone:</label>
+          <input type="text"   [(ngModel)]="selectedEmployee.phno" name="phno" required />
+        </div>
+        <button type="submit" class="btn btn-success btn-sm">Update</button>
+        
+      </form>
+    </div>
+</div> -->
+
+
+
+
+
+<!-- 
+<div class="container">
+  <h2>Employee List</h2>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    
+    <ng-container matColumnDef="empID">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let employee"> {{ employee.empID }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="empName">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let employee"> {{ employee.empName }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="age">
+      <th mat-header-cell *matHeaderCellDef> Age </th>
+      <td mat-cell *matCellDef="let employee"> {{ employee.age }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let employee"> {{ employee.email }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="dob">
+      <th mat-header-cell *matHeaderCellDef> DOB </th>
+      <td mat-cell *matCellDef="let employee"> {{ employee.dob | date:'dd-MM-yyyy' }} </td>
+    </ng-container>
+    
+
+    <ng-container matColumnDef="phno">
+      <th mat-header-cell *matHeaderCellDef> Phone </th>
+      <td mat-cell *matCellDef="let employee"> {{ employee.phno }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let employee">
+        <button mat-button color="primary" (click)="viewEmployee(employee)">View</button>
+        <button mat-button color="warn" (click)="deleteEmployee(employee)">Delete</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" 
+        (click)="selectEmployee(row)" 
+        [class.selected]="selectedEmployee?.empID === row.empID">
+    </tr>
+  </table>
+
+  <div *ngIf="selectedEmployee" class="edit-form">
+    <h3>Edit Employee</h3>
+    <form (submit)="updateEmployee()">
+      <div>
+        <label>Name:</label>
+        <input matInput type="text" [(ngModel)]="selectedEmployee.empName" name="name" required />
+      </div>
+      <div>
+        <label>Age:</label>
+        <input matInput type="number" [(ngModel)]="selectedEmployee.age" name="age" required />
+      </div>
+      <div>
+        <label>Email:</label>
+        <input matInput type="email" [(ngModel)]="selectedEmployee.email" name="email" required />
+      </div>
+
+      <div>
+        <label>DOB:</label>
+        <input matInput type="date" [(ngModel)]="selectedEmployee.dob" name="dob" required />
+      </div>
+      
+      <div>
+        <label>Phone:</label>
+        <input matInput type="text" [(ngModel)]="selectedEmployee.phno" name="phno" required />
+      </div>
+    </form>
+
+    <button mat-raised-button color="accent" (click)="updateEmployee()">Edit Selected Employee</button>
+  </div>
+</div> -->
+
+
+
+
+<!-- <div class="container">
+  <h2>Employee List</h2>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let employee">
+        <button mat-button color="primary" (click)="viewEmployee(employee)">View</button>
+        <button mat-button color="warn" (click)="deleteEmployee(employee)">Delete</button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="empID">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let employee"> {{ employee.empID }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="empName">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let employee"> {{ employee.empName }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="age">
+      <th mat-header-cell *matHeaderCellDef> Age </th>
+      <td mat-cell *matCellDef="let employee"> {{ employee.age }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let employee"> {{ employee.email }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="dob">
+      <th mat-header-cell *matHeaderCellDef> DOB </th>
+      <td mat-cell *matCellDef="let employee"> {{ employee.dob | date:'dd-MM-yyyy' }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="phno">
+      <th mat-header-cell *matHeaderCellDef> Phone </th>
+      <td mat-cell *matCellDef="let employee"> {{ employee.phno }} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" 
+        (click)="selectEmployee(row)" 
+        [class.selected]="selectedEmployee?.empID === row.empID">
+    </tr>
+  </table>
+
+  <div *ngIf="selectedEmployee" class="edit-form">
+    <h3>Edit Employee</h3>
+    <form (submit)="updateEmployee()">
+      <div>
+        <label>Name:</label>
+        <input matInput type="text" [(ngModel)]="selectedEmployee.empName" name="name" required />
+      </div>
+      <div>
+        <label>Age:</label>
+        <input matInput type="number" [(ngModel)]="selectedEmployee.age" name="age" required />
+      </div>
+      <div>
+        <label>Email:</label>
+        <input matInput type="email" [(ngModel)]="selectedEmployee.email" name="email" required />
+      </div>
+      <div>
+        <label>DOB:</label>
+        <input matInput type="date" [(ngModel)]="selectedEmployee.dob" name="dob" required />
+      </div>
+      <div>
+        <label>Phone:</label>
+        <input matInput type="text" [(ngModel)]="selectedEmployee.phno" name="phno" required />
+      </div>
+    </form>
+
+    <button mat-raised-button color="accent" (click)="updateEmployee()">Submit</button>
+  </div>
+
+
+    <div class="usp-popup" *ngIf="showSuccessPopup">
+      Edited successfully!
+    </div>
+</div> -->
+
+
+
+
+<div class="container">
+  <h2>Employee List</h2>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let employee">
+        <button mat-button color="primary" (click)="openEmployeeDialog(employee)">Edit</button>
+        <button mat-button color="warn" (click)="deleteEmployee(employee)">Delete</button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="empID">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let employee"> {{ employee.empID }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="empName">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let employee"> {{ employee.empName }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="age">
+      <th mat-header-cell *matHeaderCellDef> Age </th>
+      <td mat-cell *matCellDef="let employee"> {{ employee.age }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let employee"> {{ employee.email }} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="dob">
+      <th mat-header-cell *matHeaderCellDef> DOB </th>
+      <td mat-cell *matCellDef="let employee"> {{ employee.dob | date:'yyyy-MM-dd' }} </td>
+    </ng-container>
+    
+
+    <ng-container matColumnDef="phno">
+      <th mat-header-cell *matHeaderCellDef> Phone </th>
+      <td mat-cell *matCellDef="let employee"> {{ employee.phno }} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <!-- <div *ngIf="isEmployeeEditOpen">  <app-employee-form [employee] = "emp" (cancel) = "close($event)" (update) = "onSubmit($event)"  ></app-employee-form>
+  </div> -->
+  <app-usp-popup [showPopup]="showPopup" [message]="message"></app-usp-popup>
+</div>
+
+<div class="usp-popup" *ngIf="showPopup">
+  Edited successfully!
+</div>
+

@@ -1,0 +1,121 @@
+body {
+    background-color: #e3f2fd; 
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar Styling */
+.navbar {
+    background-color: #001f5a !important; /* Deep light blue  #2196f3*/
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-brand {
+    color: #ffffff !important;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+/* .navbar-nav .nav-link {
+    color: #ffffff !important;
+    font-weight: 500;
+    transition: all 0.3s ease-in-out;
+} */
+.navbar-nav .nav-link {
+    color: #ffffff !important;
+
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link.active {
+    color: #ffffff; /* Keep text color dark */
+    border-bottom: 2px solid #ffeb3b; /* Yellow underline */
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ffeb3b !important; /* Yellow hover effect */
+    transform: scale(1.1);
+}
+
+/* Active Page Indicator */
+/* .navbar-nav .nav-link.active {
+    border-bottom: 2px solid #ffeb3b;
+} */
+
+/* Button Styling */
+button.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler-icon {
+    background-color: white;
+    border-radius: 4px;
+}
+
+/* Router Outlet Container */
+router-outlet {
+    display: block;
+    margin-top: 20px;
+}
+
+/* Small Design Elements */
+.container-fluid {
+    padding: 10px 20px;
+}
+
+.navbar-collapse {
+    justify-content: flex-end;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar-nav {
+        text-align: center;
+    }
+    .navbar-collapse {
+        background-color: #8ba3b9;
+        padding: 10px;
+    }
+}
+
+
+
+
+/* admin and user */
+.button-container {
+    position: fixed; /* Keeps it in place */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centers the buttons */
+    display: flex;
+    gap: 30px; /* Space between buttons */
+  }
+  
+  .big-button {
+    font-size: 28px; /* Bigger text */
+    padding: 20px 50px; /* Larger button size */
+    border-radius: 12px; /* Rounded corners */
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out; /* Smooth hover effect */
+    width: 220px; /* Ensures same width */
+    height: 80px; /* Ensures same height */
+    text-align: center;
+  }
+  
+  .big-button:hover {
+    transform: scale(1.1); /* Slight zoom on hover */
+  }
+  
+  .btn-primary {
+    background-color: #001f5a;
+    color: white;
+  }
+  
+  .btn-secondary {
+    background-color: #6c757d;
+    color: white;
+  }
+  
